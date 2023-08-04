@@ -1,0 +1,5 @@
+RegisterNetEvent("rd-dispatch:restaurants")
+AddEventHandler("rd-dispatch:restaurants", function(alertCoord)
+    TriggerServerEvent('InteractSound_SV:PlayOnSource', '10-1314', 0.2)
+    policedead('10-71', 'Panic Button', alertCoord, "432") 
+end)

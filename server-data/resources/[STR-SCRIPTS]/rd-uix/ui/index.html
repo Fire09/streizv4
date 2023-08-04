@@ -1,0 +1,1131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Rated UI</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic|Droid+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/solid.min.css" integrity="sha512-jQqzj2vHVxA/yCojT8pVZjKGOe9UmoYvnOuM/2sQ110vxiajBU+4WkyRs1ODMmd4AfntwUEV4J+VfM6DkfjLRg==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+   
+    <!-- Eye -->
+    <div class="target-wrapper" style="display: none;">
+        <image class="eyeinteract" id="eyeactive" src='images/eye_active.png' style="display: none;"></image>
+        <image class="eyeinteract" id="eyenonactive" src='images/eye_notactive.png' style="display: none;"></image>
+        <div class="target-label-wrapper">
+            <div class="target-label">
+                
+            </div>
+        </div>
+    </div>
+    <!-- END Eye -->
+
+    <!-- drawtext -->
+    <div id="containerInteractions" style="display: none;">
+        <div id="boxinteractions">
+            <div id="textinteractions">
+                Press E
+            </div>
+        </div>
+    </div>
+    <!-- End drawtext -->
+
+    <div id="containerStatusHud" style="display: none;"> <!--display: none-->
+        <h3 class="status-header"></h3>
+        <div class="status-values">
+        </div>
+    </div>
+
+    <!-- Ballot -->
+    <div id="containerBallotLoading" style="display: none">
+        <h2 class="ballot-loading-election-szn" style="float: right !important;">#ElectionSZN</h2>
+        <div class="spinner-wrapper">
+        <div class='spinner'>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        </div>
+    </div>
+
+    <div id="containerBallot" style="display: none;">
+        <div class="header-ballot">
+            <h2 class="voting-for">Voting for: </h2>
+            <h2 class="election-szn">#ElectionSZN</h2>
+        </div>
+        <hr class="ballot-seperator"></hr>
+        <div class="footer-ballot">
+            <h4 class="mayor-election">MAYOR ELECTION</h3>
+            <h4 class="select-one">SELECT ONE</h2>
+        </div>
+        <div class="allcandidates">
+        </div>
+        <br>
+        <hr class="footer-ballot-seperator">
+        <div class="footer-ballot-button">
+            <button type="button" class="new-button-submit" style="text-transform: uppercase; color: #000;" id="ballot_submit">Submit Ballot</button>
+        </div>
+    </div>
+    <!-- End Ballot -->
+
+    <!-- Music Player -->
+    <div class="musicplayer-wrapper" style="width: 400px;height: 150px;background-color: #222831;top: 0;position: absolute;right: 0; display: none;">
+        <div class="musicdashboard" style="height: 80%;">
+            <!-- <iframe id="sc-widget" src="" width="100%" height="100%" scrolling="no" frameborder="no"></iframe> -->
+        </div>
+        <div class="control" style="height : 20%;display: flex;align-items: center;">
+            <div style="position: absolute; left: 0;color:white;">
+                <i class="fas fa-volume-down"></i>
+                <input class="musicvolume" type="range" min="1" max="100" value="40" style="background: #d3d3d3; outline: none;">
+                <i class="fas fa-volume-up"></i>
+            </div>
+            <div style="position: absolute;right: 0;bottom: 2px;">
+                <button class="btnMusicMinimize new-button-submit">Minimize</button>
+                <button class="btnMusicClose new-button-submit new-button-cancle">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Book -->
+    <div id="contenido_libro" class="libro" style="display: none;">
+        <div id="wrapper_libro">
+        </div>
+      
+        <div id="paginador">
+        </div>
+      
+    </div>
+    <!-- End Book -->
+
+    <!-- Sniper Scope -->
+    <div class="scopecontainer" style="display: none;"></div>
+
+    <!-- Keyboard or textbox menu -->
+    <div class="root-wrapper-textbox" style="display: none;">
+        <div class="main-wrapper-textbox">
+            <div class="body-textbox">
+            </div>
+            <div class="footer-textbox">
+                <button type="button" class="new-button-submit" id="textbox_submit">Submit</button>
+            </div>
+        </div>
+    </div>
+    <!-- End Keyboard or textbox menu -->
+
+    <!-- Context Menu -->
+    <div class="containercontext context-menu-right" style="display: none;">
+        <div class="buttoncontext">
+        </div>
+    </div>
+    <!-- End Context Menu -->
+
+    <!-- ProgressBar -->
+    <div class="progress-container" style="display: none;">
+		<div class="progress-wrap progresstaskbar"  data-progress-percent="100">
+			<div id="progress-bar" class="progresstaskbar"></div>
+		</div>
+		<div class="nicesexytext">Test</div>
+	</div>
+
+    <!-- Crosshair -->
+    <div class="crosshair-wrrapper" style="display: none;"">
+        <div id="crosshair-main" style="display: none; border-radius: 100%; border: 2px solid black; width: 2px; height: 2px; background-color: white;"></div>
+    </div>
+
+    <!-- Dispstch -->
+    <div class="dispatch-wrapper" style="z-index: 1;display: none;">
+        <div class="dispatch-log-wrapper" style="position: absolute;right: 0;background-color: red;width: 45vw;height: 100%;">
+            <div class="dispatch-player flex-column" style="position: absolute;right: 0;height: 100%;width: 50%;background-color: rosybrown; ">
+                <div class="dispatch-log-case" style="width: 100%;height: 75%;background-color: turquoise;overflow-y: scroll;">
+                    <div class="log-case-ply flex-column" style="width: 97%;height: 10%;background-color: teal;margin-top: 5px; border-right: 5px solid slateblue;">
+                        <div class="dispatch-log-header" style="width: 100%;align-items: center;height: fit-content;">
+                            <div class="dispatch-log-info flex-row" style="position: absolute;left: 0;padding-top: 5px;width: 90%;">
+                                <div class="dispatch-log-number" style="padding: 5px 5px 5px 5px;background-color: #95ef77;border-radius: 8px; margin-left: 3px;">256</div>
+                                <div class="dispatch-log-number" style="padding: 5px 5px 5px 5px;background-color: #f2a365;border-radius: 8px; margin-left: 3px;">256</div>
+                                <div class="dispatch-log-title" style="margin-left: 3px; color: white;font-weight: bold;">GUN SHOTS REPORTED</div>
+                            </div>
+                            <div class="dispatch-log-icon" style="position: relative;right: 0; color: white;font-size: 27px; align-items: center;float: right; padding-top: 3px;">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                        </div>
+                        <div class="dispatch-log-body">
+                            
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="dispatch-unit-info flex-row" style="width: 100%;height: 25%;background-color: #20242E;border-top: 3px solid cornflowerblue;">
+
+                    <div class="dispatch-police-units flex-column" style="height: 100%;width: 50%;position: relative;left: 0;">
+                        <div class="title-police-unit" style="color: white;font-weight: 600;height: 20px;width: 100%;">
+                            POLICE
+                        </div>
+                        <div class="dispatch-police-logunit" style="height: 100%;width: 100%; overflow-y: scroll;">
+                            <div class="dispatch-units flex-row" style="align-items: center; padding-top: 5px;width: 100%;height: fit-content;background-color: #30475e;margin-top: 5px;padding-bottom: 5px;">
+                                <div class="unit-info-veh" style="padding-right: 10px;padding-left: 5px; color: white;font-size: 20px;">
+                                    <i class="fas fa-car-side"></i>
+                                </div>
+                                <div class="unit-into flex-column">
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                </div>
+                            </div>
+
+                            <div class="dispatch-units flex-row" style="align-items: center; padding-top: 5px;width: 100%;height: fit-content;background-color: #30475e;margin-top: 5px;padding-bottom: 5px;">
+                                <div class="unit-info-veh" style="padding-right: 10px;padding-left: 5px; color: white;font-size: 20px;">
+                                    <i class="fas fa-car-side"></i>
+                                </div>
+                                <div class="unit-into flex-column">
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                </div>
+                            </div>
+
+                            <div class="dispatch-units flex-row" style="align-items: center; padding-top: 5px;width: 100%;height: fit-content;background-color: #30475e;margin-top: 5px;padding-bottom: 5px;">
+                                <div class="unit-info-veh" style="padding-right: 10px;padding-left: 5px; color: white;font-size: 20px;">
+                                    <i class="fas fa-car-side"></i>
+                                </div>
+                                <div class="unit-into flex-column">
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                    <div class="unit-ply" style="width:fit-content;height: fit-content; border-radius: 50px;background-color: tomato;padding: 5px 10px 5px 10px;margin-top: 5px;">201 - Trexze Vanz</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="dispatch-ems-units flex-column" style="height: 100%;width: 45%;position: relative;right: 0;">
+                        <div class="title-police-unit" style="color: white;font-weight: 600;height: 20px;width: 100%;">
+                            EMS
+                        </div>
+                    </div>
+                </div>
+            </div>  
+            <div class="dispatch-call" style="position: absolute;left: 0;height: 100%;width: 50%;background-color: tomato;">
+
+            </div>
+        </div>
+        <div class="dispatch-map" style="position: absolute;left: 0;background-color: white;width: 55vw;height: 100%;">
+            <div class="dispatch-map-container" style="background-color: yellowgreen;width: 83%; height: 90%; position: absolute;top: 6%;left: 8%;">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- HUD UI  -->
+
+
+    <!-- <div class="vehicle-hud-wrapper flex-row">
+        <div class="speedometer-wrapper">
+            <svg width="75" height="75" style="background-color: orchid;">
+                <circle class="speedometer-bg" stroke="gray" stroke-width="6" style="stroke-opacity: 0.5" fill="transparent" r="31" cx="38" cy="38" stroke-dasharray="77 53" stroke-dashoffset="0"/>
+                <circle class="progressSpeed" stroke="white" stroke-width="6" style="stroke-opacity: 1" fill="transparent" r="31" cx="38" cy="38" stroke-dasharray="77 53" stroke-dashoffset="0"/>
+            </svg>
+            <div class="info-speed">200</div>
+            <div class="info-txt" style="position: absolute;bottom: 2.3vh;color: white;font-weight: 600;left: 1.3vw;font-size: 13px;">MPH</div>
+        </div>
+        <div class="fuel-wrapper" style="position: absolute;width: 1vh;height: 2vh;bottom: 2vh;left: 2.8vw;">
+            <svg width="25" height="25" style="background-color: red;">
+                <circle class="speedometer-bg" stroke="gray" stroke-width="6" style="stroke-opacity: 0.5" fill="transparent" r="31" cx="38" cy="38" stroke-dasharray="77 53" stroke-dashoffset="0"/>
+            </svg>
+        </div>
+        <div class="alt-wrapper">
+            <svg width="75" height="75" style="background-color: orange;">
+                <circle class="speedometer-bg" stroke="gray" stroke-width="6" style="stroke-opacity: 0.5" fill="transparent" r="31" cx="38" cy="38" stroke-dasharray="77 53" stroke-dashoffset="0"/>
+                <circle class="progressSpeed speed" stroke="white" stroke-width="6" style="stroke-opacity: 1" fill="transparent" r="31" cx="38" cy="38" stroke-dasharray="0 80" stroke-dashoffset="0"/>
+            </svg>
+            <div class="alt-info" >100</div>
+        </div>
+
+        <div class="info-vehicle" style="color: red;font-size: 22px;">
+            <i class="fas fa-user-slash"></i>
+            <i class="fas fa-gas-pump"></i>
+        </div>
+    </div> -->
+
+
+    <!-- Minigames Numbers -->
+    <div class="minigamenumbers hidden">
+        <div class="splashnumbers">
+            <div class="fa hacker">&#xf21b;</div>Input password as shown</div>
+        <div class="numbers hidden">012345678901</div>
+        <div class="inputnumbers hidden">
+            <div class="answernumbers">
+                <div class="answer-wrappernumbers">
+                    <label for="answernumbers">Password</label>
+                    <input id="answernumbers" type="text" autocomplete="off" autofocus="" value="" maxlength="20">
+                </div>
+            </div>
+            <div class="solution"></div>
+        </div>
+    </div>
+
+            <!-- Begin Laptop -->
+            <div class="tablet-container" style="display: none;">
+                <div class="boosting-settings" style="font-family: Arial, Helvetica, sans-serif;color: white;display: none;">
+                    <h1 style="font-family: Arial, Helvetica, sans-serif;color: white;font-size: 20px;justify-content: center;align-items: center;text-align: center;">Settings</h1>
+                    <div style="margin-top: 2vh;display: block;justify-content: center;align-items: center;text-align: center;">
+                        <p style="font-size: 11px">Enter Background</p>
+                        <input style="width: 80%;color: white;background-color: transparent;stroke: none;border-bottom: 1px solid white;border-top: none;border-left: none;border-right: none;outline: none;" type="text" id="bacgkroundurl">
+                        <button id="background-apply" class="btn-boosting" style="margin-top: 2vh;margin-left: -0.1vh;">Save | Apply</button>
+                        <button id="background-reset" class="btn-boosting" style="margin-top: 2vh;margin-left: -0.1vh;">Reset</button>
+                    </div>
+                </div>
+                <div class="popupnotify" style="width: 20%;">
+                </div>
+                <div class="tablet-apps">
+    <!--                 <div class="tablet-app boosting boosting-app" style="display: none;">
+                        <div style="width:4vh;height: 4vh;border-radius: 5px;margin-left: 0.4vh;background-color: #353d49;font-size: 12px;display: flex;justify-content: center;align-items: center;">
+                            <h1 style="color: white;font-family: Arial, Helvetica, sans-serif;">B</h1>
+                            <img style="width: 90%; color: white;font-family: Arial, Helvetica, sans-serif;" src="https://i.imgur.com/5Kid1Ic.png">
+                        </div>
+                        <p style="position: absolute;color: white;font-family: Arial, Helvetica, sans-serif;font-size: 11px;margin-top: 0.7vh;margin-left: 5px;white-space: nowrap;">Boosting</p>
+                    </div> -->
+                    <div class="tablet-app tuner tuner-app" style="display: block;">
+                        <div style="width:4vh;height: 4vh;border-radius: 5px;margin-left: 0.4vh;background-color: #02d2ff;font-size: 12px;display: flex;justify-content: center;align-items: center;">
+                            <h1 style="color: white;font-family: Arial, Helvetica, sans-serif; font-size: 15px;">DBA</h1>
+                        </div>
+                        <p style="position: absolute;color: white;font-family: Arial, Helvetica, sans-serif;font-size: 11px;margin-top: 0.7vh;margin-left: -11.5px;white-space: nowrap;">Down Bad Autos</p>
+                    </div>
+                    <div class="tablet-app tuner-public tuner-app-public" style="display: block;">
+                        <div style="width:4vh;height: 4vh;border-radius: 5px;margin-left: 0.4vh;background-color: #02d2ff;font-size: 12px;display: flex;justify-content: center;align-items: center;">
+                            <h1 style="color: white;font-family: Arial, Helvetica, sans-serif; font-size: 15px;">DBA</h1>
+                        </div>
+                        <p style="position: absolute;color: white;font-family: Arial, Helvetica, sans-serif;font-size: 11px;margin-top: 0.7vh;margin-left: -11.5px;white-space: nowrap;">Down Bad Autos</p>
+                    </div>
+                </div>
+    
+                <div class="notifications">
+                    <div class="popup">    
+                    </div>
+                    <h1 style="font-weight: normal;font-size: 1.8vmin;text-align: center;">Notifications</h1>
+                    <div class="notifications-list" id="notificationslist">
+                    </div>
+                </div>
+                
+                <div class="tablet-taskbar" style="display: flex;align-items: center;">
+                    <img id="logoicon" style="width:1.3%;height: auto;margin-left: 1.2vh;" src="https://i.imgur.com/EsrwoqA.png">
+                    <img style="margin-left:1.4vh;width:1.3%;height: auto;" src="https://winaero.com/blog/wp-content/uploads/2018/12/file-explorer-folder-libraries-icon-18298.png"> <!--margin-left:2vh-->
+                    <div style="margin-top: -1.1vmin;">
+                    <i class="far fa-comment-alt nonnon" style="position: absolute;display: flex;justify-content: center;align-items: center;left: 97.8%;font-size: 1.4vmin;color: rgba(255, 255, 255, 0.77);" aria-hidden="true"></i>
+                    <i class="fas fa-wifi fascustom" style="position: absolute;display: flex;justify-content: center;align-items: center;left: 92.5%;font-size: 1.4vmin;color: rgba(255, 255, 255, 0.77);" aria-hidden="true"></i>
+                    <i class="fas fa-cog settings fascustom" style="position: absolute;display: flex;justify-content: center;align-items: center;left: 90.7%;font-size: 1.4vmin;color: rgba(255, 255, 255, 0.77);" aria-hidden="true"></i>
+                    </div>
+                    
+                    <div style="margin-left: 90%;position: relative;color: white;font-family: Arial, Helvetica, sans-serif;font-size: 12px;justify-content: center;align-items: center;text-align: center;">
+                        <p id="clock" style="font-size: 0.8vmin;margin-top:0.5vmin;">12:53 AM</p>
+                        <p id="date" style="font-size: 0.8vmin;    MARGIN-TOP: -0.5vmin;">12:53 AM</p>
+                    </div>
+        
+            <div id="bruh" style="display: none !important; position: absolute;width:2vh;height: 2vh;border-radius: 5px;margin-left: 8vh;background-color: #353d49;font-size:6px;display: flex;justify-content: center;align-items: center;">
+                <h1 style="color: white;font-family: Arial, Helvetica, sans-serif;">B</h1>
+            </div></div>
+    
+                <div class="boosting-container" style="display: none;">
+                    <div id="StartContract" style="display: none;">
+                        <h1 style="font-size: 20px">Select Type</h1>
+                        <p id="bgshutre">If you choose to vin scratch it will cost an additional 350 BNE to claim ownership</p>
+                        <a id="closevin" style="position: absolute;left: 94%;top: 6%;font-weight: bold;">X</a>
+                        <div style="display: flex;justify-content: center;align-items: center;position: absolute;top: 70%;width: 100%;">
+                            <button data-idk="vin" class="btn-dialog" style="margin-left: 3vh;">VIN SCRATCH</button>
+                            <button data-idk="normal" class="btn-dialog" style="margin-left: 3vh;">NORMAL DROPOFF</button>
+                        </div>
+                    </div>
+                    <div class="boosting-header" style="align-items: center;display: flex;">
+                        <p style="float: left;font-family: Arial, Helvetica, sans-serif;font-size: 12px;margin-left: 1vh;color: white;font-weight: bold;">Boosting Contracts</p>
+                    </div>
+                    <div class="boosting-footer" style="align-items: center;display: flex;position: absolute;top: 95%;">
+                    </div>
+                    <div class="boosting-topbuttons" style="position: absolute;top: 10%;left: 3%;width: 90%;">
+                        <button class="btn-boosting" style="margin-left: -0.1vh;">MY CONTRACTS</button>
+                        <button class="btn-boosting" id="togglequeue" style="position: absolute;left: 91.5%;white-space: nowrap;">JOIN QUEUE</button> 
+                        <div class="boosting-bar">
+                            <p style="color: white;font-family: Arial, Helvetica, sans-serif;position: absolute;left: -1.7%;top: -1vh;font-size: 0.8vmin;/* display: flex; *//* align-items: center; */" id="currentlevel">M</p>
+                            <p id="nextlevel" style="color: white;font-family: Arial, Helvetica, sans-serif;position: absolute;right: -1.7%;top: -1vh;font-size: 0.8vmin;/* display: flex; *//* align-items: center; */">A+</p>
+    
+                            <div class="prog-bar" style="width: 0%;"></div>
+                        </div>
+                        <div class="vehicles-bar" style="color: white;font-family: Arial, Helvetica, sans-serif;font-size: 14px;max-height: 54vh;overflow-y: auto;overflow-x: hidden;width: 104%;display: flex;margin-top: 4vh;flex-wrap: wrap;gap: 2vmin;">
+                        </div>
+                    </div>  
+                </div>
+    
+                <div class="tuner-container" style="display: none;">
+                    <div class="tuner-header" style="align-items: center;display: flex;">
+                        <p style="float: left;font-family: Arial, Helvetica, sans-serif;font-size: 12px;margin-left: 1vh;color: white;font-weight: bold;">Down Bad Autos</p>
+                    </div>
+                    <div class="tuner-footer" style="align-items: center;display: flex;position: absolute;top: 95%;">
+                    </div>
+                    <div class="tuner-topbuttons" style="position: absolute;top: 10%;left: 3%;width: 90%; height: 100%">
+                        <button class="btn-tuner cars tuner-active" data-action="cars" style="margin-left: -0.1vh;">Available Cars</button>
+                        <button class="btn-tuner purchases" data-action="purchases" style="margin-left: 1vh;">Purchases</button>
+                        <div class="tuner-tabs" style="margin-top: 10px;overflow-y: scroll !important; max-height: 82%">
+                            <table id="tunercars" class="tuner-cars" style="width: 100%;">
+                                <thead style="background-color: rgb(60, 61, 74); color: rgb(172, 233, 230); font-family: Arial, Helvetica, sans-serif;">
+                                    <tr>
+                                        <td>Car Name</td>
+                                        <td>Car Price</td>
+                                        <td>Car Stock</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="tuner-table" style="background-color: rgb(60, 61, 74); color: rgb(172, 233, 230);">
+                                </tbody>
+                            </table>
+                            <table class="tuner-purchases" style="width: 100%;">
+                                <thead style="background-color: rgb(60, 61, 74); color: rgb(172, 233, 230); font-family: Arial, Helvetica, sans-serif;">
+                                    <tr>
+                                        <td>Car Name</td>
+                                        <td>Car Price</td>
+                                        <td>Car Buyer</td>
+                                        <td>Purchase Date</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="tuner-buyer-table" style="background-color: rgb(60, 61, 74); color: rgb(172, 233, 230);">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="tuner-public-container" style="display: none;">
+                    <div class="tuner-public-header" style="align-items: center;display: flex;">
+                        <p style="float: left;font-family: Arial, Helvetica, sans-serif;font-size: 12px;margin-left: 1vh;color: white;font-weight: bold;">Down Bad Autos</p>
+                    </div>
+                    <div class="tuner-public-footer" style="align-items: center;display: flex;position: absolute;top: 95%;">
+                    </div>
+                    <div class="tuner-public-topbuttons" style="position: absolute;top: 10%;left: 3%;width: 90%; height: 100%">
+                        <button class="btn-tuner cars tuner-active" data-action="cars" style="margin-left: -0.1vh;">Available Cars</button>
+                        <div class="tuner-public-tabs" style="margin-top: 10px;overflow-y: scroll !important; max-height: 82%">
+                            <table id="tunerpubliccars" class="tuner-public-cars" style="width: 100%;">
+                                <thead style="background-color: rgb(60, 61, 74); color: rgb(172, 233, 230); font-family: Arial, Helvetica, sans-serif;">
+                                    <tr>
+                                        <td>Car Name</td>
+                                        <td>Car Price</td>
+                                    </tr>
+                                </thead>
+                                <tbody class="tuner-public-table" style="background-color: rgb(60, 61, 74); color: rgb(172, 233, 230);">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- End Laptop -->
+        
+    <!-- Minigame Captcha -->
+    <div class="minigamecaptcha hidden">
+        <div class="splashcaptcha">
+            <div class="icon">
+                <div class="fa hacker">&#xf21b;</div>
+            </div>
+            
+            <span class="message">Captcha Minigame</span>
+            <audio preload="auto">
+                <source src="./media/audio_splash.ogg" type="audio/ogg">
+            </audio>
+        </div>
+        <div class="groupscaptcha hidden">
+
+        </div>
+        <div class="inputs hidden">
+            <div class="timer">
+                <div class="progress active"><div class="progress-bar timer-progress"></div></div>
+                <audio preload="auto" loop>
+                    <source src="./media/audio_timer.ogg" type="audio/ogg">
+                </audio>
+            </div>
+            <div class="question">
+                ENTER THE <span class="quiz1">$nbsp;</span> AND <span class="quiz2">$nbsp;</span>
+            </div>
+            <div class="answer">
+                <div class="answer-wrapper">
+                    <label for="answer">Answer</label>
+                    <input id="answer" type="text" autocomplete="off" placeholder="answer" autofocus>
+                </div>
+            </div>
+            <div class="solution hidden">
+                Real numbers: <span class="real_numbers">&nbsp;</span><br>
+                Solution: <span class="solution_text">&nbsp;</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minigame Thermite -->
+    <div class="minigame_memory hidden">
+        <div class="splash_memory">Remote Sequencing Required</div>
+        <div class="groups_memory hidden"></div>
+    </div>
+
+    <!-- Skillbar UI -->
+    <div class="skillbar" style="margin-top: 63vh;display: none;">
+        <canvas id="skillbarcanvas" width="300" height="300"></canvas>
+    </div>
+
+    <!-- Browser UI -->
+    <div class="browser-wrapper hidden"></div>
+
+    <!-- Badge UI -->
+    <div class="badge-app-wrapper hidden">
+        <div class="exterior-wrapper" >
+            <div class="interior-wrapper" >
+                <div class="row">
+                    <div class="column">
+                        <div class="left-column" >
+                            <div class="information-wrapper">
+                                <div class="information">
+                                    <div class="profile-image-holder">
+                                        <img src="./images/badge/testchar.png" alt="">
+                                    </div>
+                                    <div class="name-info">
+                                        <div class="banner">Los Santos PD</div>
+                                        <div class="name-info-wrap">
+                                            <p>Chief</p>
+                                            <p>Trexze</p>
+                                        </div>
+                                        <div class="callsign">
+                                            <p>#riddle</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="right-column">
+                            <div class="badge-wrapper">
+                                <div class="badge"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Radio UI -->
+    <div class="radio-container hidden">
+        <div class="radio-image-container">
+            <div class="on-off-wrapper" ></div>
+            <div class="vol-up-wrapper"></div>
+            <div class="vol-down-wrapper"></div>
+            <div class="nopixel-tag">
+                <p>riddle</p>
+            </div>
+            <div class="other-tag"></div>
+            <div class="text-wrapper">
+                <div class="text-input-wrapper">
+                    <input type="text" id="channelradio" name="channel"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="pager-notification">
+        <img src="./images/pager.png" style="width: 15vw;height: 20vh;"/>
+    </div>
+
+    <!-- Showroom UI -->
+    <div class="showroom-wrapper hidden">
+        <div class="spinner-container hidden">
+            <div class="spinner-wrapper">
+                <div class="lds-spinner">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="start-container">
+            <div class="ltr">
+                <div class="watermark">
+                    <p>Sosa</p>
+                </div>
+            </div>
+            <div class="rtl">
+                Magical
+            </div>
+        </div>
+        <div class="main">
+
+            <!-- Vehicle Information Selected -->
+            <div class="stats">
+                <div class="make-model selector-container">
+                    <div class="brand-container">
+                        <div class="veh-class">B</div>
+                        <div class="brand">Nagasaki</div>
+                        <div class="name">Chimera</div>
+                    </div>
+                </div>
+                <div class="spacer"></div>
+                <div class="personalization"></div>
+                <div class="breakdowns">
+                    <div class="breakdown">
+                        <div class="name">ACCELERATION</div>
+                        <div class="value">
+                            <div class="bg">
+                                <div class="fill" style="width: 41%;"></div>
+                            </div>
+                            <div class="actual">4.1</div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown">
+                        <div class="name">SPEED</div>
+                        <div class="value">
+                            <div class="bg">
+                                <div class="fill" style="width: 9%;"></div>
+                            </div>
+                            <div class="actual">0.9</div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown">
+                        <div class="name">HANDLING</div>
+                        <div class="value">
+                            <div class="bg">
+                                <div class="fill" style="width: 87%;"></div>
+                            </div>
+                            <div class="actual">8.7</div>
+                        </div>
+                    </div>
+
+                    <div class="breakdown">
+                        <div class="name">BRAKING</div>
+                        <div class="value">
+                            <div class="bg">
+                                <div class="fill" style="width: 8%;"></div>
+                            </div>
+                            <div class="actual">0.8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features hidden">
+                    <div class="feature">
+                        <div class="value" ></div>
+                        <div class="title">asasas</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Category Selector, price and Stock -->
+            <div class="selector-container">
+                <div class="class-selector">
+                    <div class="available-classes"></div>
+                    <div class="price">$165,000.00</div>
+                </div>
+                <div class="selector-spacer"></div>
+                <div class="selector">
+                    <div class="position-container" id="available-stock">6/64</div>
+                    <div class="mclass-selector">
+                        <div class="mclass  mclass-selected" onclick="vehmenuselect()">Motorcycles</div>
+                        <div class="mclass">Muscle</div>
+                        <div class="mclass">Off-Road</div>
+                        <div class="mclass">SUVs</div>
+                        <div class="mclass">Sports</div>
+                        <div class="mclass">Sports Classics</div>
+                        <div class="mclass">Super</div>
+                        <div class="mclass">Vans</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- List Car In Category -->
+        <div class="showcase" role="listbox">
+            <div class="car-container car-container-selected">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+
+            <div class="car-container ">
+                <div class="top">$165,000.00</div>
+                <div class="middle"></div>
+                <div class="bottom">Chimera</div>
+            </div>
+        </div>
+
+        <!-- Btn Next and Prev -->
+        <div class="actions">
+            <div class="btn prev" >PREVIOUS</div>
+            <div class="btn next" >NEXT</div>
+        </div>
+    </div>
+
+    <div class="newspaper-wrapper hidden">
+        <div class="newspaper">
+            <div class="content">
+                <div class="header">
+                    <div class="alert-box">New Information</div>
+                    <div class="title">NEWSPAPPER</div>
+                </div>
+                <div class="subhead">
+                    <div class="taxes">
+                        <span>Edition: 1</span>
+                    </div>
+                    <div class="taxes">
+                        <span>Best Newspapper in the world</span>
+                    </div>
+                    <div class="taxes">
+                        <span>Current News</span>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column-dbl"></div>
+                    <div class="column" id="upcomingnews">
+                        <div class="headline">UPCOMING ELECTIONS</div>
+                        <div class="subheadline">Give Them Hope</div>
+                        
+                    </div>
+
+                    <div class="column" id="electionsnews">
+                        <div class="headline">RECENT ELECTIONS</div>
+                        <div class="subheadline">Destroy Their Hope</div>
+                        <div class="column-content">
+
+                            <div class="election">
+                                <span>Test This Election</span>
+                            </div>
+
+                            <div class="election">
+                                <span>Test This Election</span>
+                            </div>
+
+                            <div class="election">
+                                <span>Test This Election</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column" id="lockpicknews">
+                        <div class="headline">LOCKUPS</div>
+                        <div class="subheadline">PD Gang W's</div>
+                        <div class="column-content" id="contentlockups">
+                            <div class="lockup">
+                                <span>Test This Lockup</span>
+                            </div>
+                            <div class="lockup">
+                                <span>Test This Lockup</span>
+                            </div>
+                            <div class="lockup">
+                                <span>Test This Lockup</span>
+                            </div>
+                            <div class="lockup">
+                                <span>Test This Lockup</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column" id="drugnews">
+                        <div class="headline">Drugs</div>
+                        <div class="subheadline">by Chips Ahoy</div>
+                        <div class="column-content">
+                            Tsahalsjlakjkajsljsa
+                        </div>
+
+                        <div class="headline">Drugs</div>
+                        <div class="subheadline">by Chips Ahoy</div>
+                        <div class="column-content">
+                            Tsahalsjlakjkajsljsa
+                        </div>
+
+                        <div class="headline">Drugs</div>
+                        <div class="subheadline">by Chips Ahoy</div>
+                        <div class="column-content">
+                            Tsahalsjlakjkajsljsa
+                        </div>
+
+                        
+                    </div>
+
+                    
+                </div>
+
+                <div class="subhead">
+                    <div class="taxes">
+                        <span>RECENT TAX CHANGES: NO TAX-0%</span>
+                        <span>SERVICES-15%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="hud-settings-wrapper" style="display: none;">
+        <div class="hud-settings">
+            <div class="setting-menu">
+                <div class="boxsetting-menu" id="hudmenu">
+                    <span class="title">HUD</span>
+                </div>
+                <div class="boxsetting-menu" id="phonemenu">
+                    <span class="title">Phone</span>
+                </div>
+                <div class="boxsetting-menu" id="radiomenu">
+                    <span class="title">Radio / RTC</span>
+                </div>
+            </div>
+            <div class="settings-panel">
+                <div class="setting-panel">
+                    <div class="hud-settings-menu" style="display: none;">
+                        <div class="column">
+                            <div class="header">Preset</div>
+                            <div class="row">
+                                <div class="left-menu">
+                                    <select class="presetid">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                    </select>
+                                </div>
+                                <div class="right-menu">
+                                    <button type="button" class="new-button-submit" id="setting_hud_save" style="height: 4vh;width: 5vw;right: 0;">Save</button>
+                                </div>
+                            </div>
+                            
+                            <p>Save settings for the selected preset and then use /hud [number] where number is the selected preset Currenly /hud 1</p>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="column">
+                            <div class="header">Status</div>
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" id="showheath">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Health</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu hidden" id="valhealthmenu">
+                                    <div class="column">
+                                        
+                                        <p style="font-size: 1.3vh; padding-left: 2px;padding-top: 8px;">Hide when more than.. (100 = never hide)</p>
+                                        <div class="row">
+                                            <i class="fas fa-percent" style="position: absolute;"></i>
+                                            <input type="text" id="valhealth">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" id="showarmor">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Armor</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu hidden" id="valarmormenu">
+                                    <div class="column">
+                                        <p style="font-size: 1.3vh; padding-left: 2px;padding-top: 8px;">Hide when more than.. (100 = never hide)</p>
+                                        <div class="row">
+                                            <i class="fas fa-percent" style="position: absolute;"></i>
+                                            <input type="text" id="valarmor">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" id="showfood">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Food</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu hidden" id="valfoodmenu">
+                                    <div class="column">
+                                        <p style="font-size: 1.3vh; padding-left: 2px;padding-top: 8px;">Hide when more than.. (100 = never hide)</p>
+                                        <div class="row">
+                                            <i class="fas fa-percent" style="position: absolute;"></i>
+                                            <input type="text" id="valfood">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" id="showwater">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Water</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu hidden" id="valwatermenu">
+                                    <div class="column">
+                                        <p style="font-size: 1.3vh; padding-left: 2px;padding-top: 8px;">Hide when more than.. (100 = never hide)</p>
+                                        <div class="row">
+                                            <i class="fas fa-percent" style="position: absolute;"></i>
+                                            <input type="text" id="valwater">
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" id="showstress">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Stress when relevand</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu">
+                                    <div class="row">
+                                        <input type="checkbox" id="showoxygen">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Oxygen when relevand</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="spacer"></div>
+
+                        <div class="column">
+                            <div class="header">Vehicle</div>
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" class="showminimap">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Minimap Enabled</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu">
+                                    <div class="column">
+                                        <label>Speedometer FPS</label>
+                                        <select class="speedometerfps">
+                                            <option>15</option>
+                                            <option>30</option>
+                                            <option>60</option>
+                                            <option>120</option>
+                                        </select>
+                                        <span>The higher the FPS, the more demanding this is on your machine</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" class="defaultminimap">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Default Minimap</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" class="minimapoutline">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Minimap Outline</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" class="showharness">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Harness durability</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="row">
+                                        <input type="checkbox" class="shownitrolevel">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Nitrous levels</p>
+                                    </div>
+                                </div>
+                                <div class="right-menu">
+                                    <div class="row">
+                                        <input type="checkbox" class="shownitrotrail">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show Nitrous trail</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="column">
+                            <div class="header">Compass</div>
+                            <div class="row">
+                                <div class="left-menu">
+                                    <div class="column">
+                                        <div class="row">
+                                            <input type="checkbox" class="showcompass">
+                                            <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Enabled</p>
+                                        </div>
+                                        <p>Disabling the compass entirely can vastly improve performance</p>
+                                    </div>
+
+                                    <div class="row">
+                                        <input type="checkbox" class="showtimecompass">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show the current time with compass</p>
+                                    </div>
+
+                                    <div class="row">
+                                        <input type="checkbox" class="showstreetcompass">
+                                        <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Show street names when in a vehicle</p>
+                                    </div>
+
+                                </div>
+                                <div class="right-menu">
+                                    <div class="column">
+                                        <label>Compass FPS</label>
+                                        <select class="compassfps">
+                                            <option>15</option>
+                                            <option>30</option>
+                                            <option>60</option>
+                                            <option>120</option>
+                                        </select>
+                                        <span>The higher the FPS, the more demanding this is on your machine</span>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="column">
+                            <div class="header">Black Bars</div>
+
+                            <div class="row">
+                                <input type="checkbox" class="showblackbars">
+                                <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Enabled</p>
+                            </div>
+
+                            <div class="column">
+                                <p style="font-size: 1.3vh; padding-left: 2px;padding-top: 8px;">Percentage of screen</p>
+                                <div class="row">
+                                    <i class="fas fa-percent" style="position: absolute;"></i>
+                                    <input type="text" id="blackbars">
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <div class="spacer"></div>
+
+                        <div class="column">
+                            <div class="header">Crosshair</div>
+                            <div class="row">
+                                <input type="checkbox" class="showcrosshair">
+                                
+                                <p style="font-size: 1.7vh; padding-left: 2px;padding-top: 8px;">Enabled</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="phone-setting-menu">
+
+                    </div>
+
+                    <div class="radio-setting-menu">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script> -->
+    <script src="./js/soundcloudapi.js"></script>
+    <script src="./js/howler.js"></script>
+    <script src="./js/hud.js"></script>
+    <script defer src="./js/script.js"></script>
+</body>
+</html>

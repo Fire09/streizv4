@@ -1,0 +1,1 @@
+const TimeAllowed = 1000 * 60 * 40320; // 28 days | 4 weeks || 2.419.200.000

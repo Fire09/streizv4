@@ -1,0 +1,67 @@
+-- -- Elevator
+
+-- RegisterNetEvent('rd-jobs:hightable:main-floor:elevator_go_up')
+-- AddEventHandler('rd-jobs:hightable:main-floor:elevator_go_up', function()
+--     local isEmployed = exports["rd-business"]:IsEmployedAt("high_table")
+--     if isEmployed then
+--         local finished = exports['rd-taskbar']:taskBar(5000, 'Calling Elevator')
+--         if (finished == 100) then
+--             SetEntityHeading(GetPlayerPed(-1), 286.29919433594)
+--             SetEntityCoords(PlayerPedId(), -316.8923034668,217.89889526367,99.86376953125)
+--         end
+--     end
+-- end)
+
+-- RegisterUICallback("rd-elavator", function(data, cb)
+--     cb({ data = {}, meta = { ok = true, message = 'done' } })
+--     TriggerEvent('rd-jobs:hightable:main-floor:elevator_go_up')
+--     exports["rd-ui"]:hideContextMenu()
+-- end)
+
+-- RegisterNetEvent('hightable:elavatorup')
+-- AddEventHandler('hightable:elavatorup', function()
+-- 	local menuData = {
+-- 		{
+--             title = "Elevator",
+--             description = "High Table",
+--             key = true,
+-- 			children = {
+-- 				{ title = "Main Floor", action = "rd-elavator", key = true},
+--             },
+--         },
+--     }
+--     exports["rd-ui"]:showContextMenu(menuData)
+-- end)
+
+-- RegisterNetEvent('rd-jobs:hightable:main-floor:elevator_go_down')
+-- AddEventHandler('rd-jobs:hightable:main-floor:elevator_go_down', function()
+--     local isEmployed = exports["rd-business"]:IsEmployedAt("high_table")
+--     if isEmployed then
+--         local finished = exports['rd-taskbar']:taskBar(5000, 'Calling Elevator')
+--         if (finished == 100) then
+--             SetEntityHeading(GetPlayerPed(-1), 283.4645690918)
+--             SetEntityCoords(PlayerPedId(), -318.35604858398,217.02856445312,87.86669921875)
+--         end
+--     end
+-- end)
+
+-- RegisterUICallback("rd-elavator2", function(data, cb)
+--     cb({ data = {}, meta = { ok = true, message = 'done' } })
+--     TriggerEvent('rd-jobs:hightable:main-floor:elevator_go_down')
+--     exports["rd-ui"]:hideContextMenu()
+-- end)
+
+-- RegisterNetEvent('hightable:elavatordown')
+-- AddEventHandler('hightable:elavatordown', function()
+-- 	local menuData = {
+-- 		{
+--             title = "Elevator",
+--             description = "High Table",
+--             key = true,
+-- 			children = {
+-- 				{ title = "First Floor", action = "rd-elavator2", key = true},
+--             },
+--         },
+--     }
+--     exports["rd-ui"]:showContextMenu(menuData)
+-- end)

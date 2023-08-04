@@ -1,0 +1,33 @@
+local function restartUI(withMsg)
+  SendUIMessage({ source = "rd-nui", app = "main", action = "restart" });
+  if withMsg then
+    TriggerEvent("DoLongHudText", "You can also use 'ui-r' as a shorter version to restart!")
+  end
+  TriggerScreenblurFadeOut(100.0)
+  TriggerEvent('closeInventoryGui')
+  TriggerEvent('rd-banking:ResetUI')
+  TriggerEvent('rd-radio:ResetUI')
+  TriggerEvent('rd-menu:ResetUI')
+  TriggerEvent('rd-interact:ResetUI')
+  TriggerEvent('rd-mdt:ResetUI')
+  TriggerEvent('rd-ui:restartUI')
+  TriggerEvent('menu:menuexit')
+  TriggerEvent('clothing:close')
+  exports['rd-ui']:showInteraction("Restarting UI .")
+  Wait(1000)
+  exports['rd-ui']:showInteraction("Restarting UI ..")
+  Wait(1000)
+  exports['rd-ui']:showInteraction("Restarting UI ...")
+  Wait(1000)
+  exports['rd-ui']:showInteraction("UI Successfully Restarted")
+  Wait(1000)
+  exports['rd-ui']:hideInteraction()
+  exports["carandplayerhud"]:initHud(true)
+  SendUIMessage({ app = "hud", data = { display = true }, source = "rd-nui" })
+  local cj = exports["police"]:getCurrentJob()
+end
+
+RegisterCommand("rd-ui:restart", function() restartUI(true) end, false)
+RegisterCommand("ui-r", function() restartUI() end, false)
+RegisterNetEvent("rd-hud:server-restart")
+AddEventHandler("rd-hud:server-restart", restartUI)

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700,700i" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/icons3.0.css">
+    <link type="text/css" rel="stylesheet" href="css/phone.css">
+    <link type="text/css" rel="stylesheet" href="css/teste.css">
+    <link type="text/css" rel="stylesheet" href="css/calculadora.css">
+    <link type="text/css" rel="stylesheet" href="css/iphone.css">
+    <link type="text/css" rel="stylesheet" href="css/champion.css">
+    <link type="text/css" rel="stylesheet" href="css/racing.css">
+    <link type="text/css" rel="stylesheet" href="css/emails.css">
+    <link type="text/css" rel="stylesheet" href="css/group.css">
+    <link type="text/css" rel="stylesheet" href="css/twitter.css">
+    <link type="text/css" rel="stylesheet" href="css/iphonex.css">
+    <link type="text/css" rel="stylesheet" href="css/settings.css">
+    <link type="text/css" rel="stylesheet" href="css/wallpaper.css">
+    <link type="text/css" rel="stylesheet" href="css/all.min.css"> <!-- FontAwesome -->
+    <link type="text/css" rel="stylesheet" href="css/balloon.min.css"> <!-- Tooltips -->
+     <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
+    <title>np - Phone 3.0</title>
+  </head>
+
+<body style="background-image: url(unknown.png);"></body>
+<body>
+    <!-- Main Container-->
+    <style id="specCols"></style>
+    <style id="ThemeCores"></style>
+    <div class="container"></div>
+
+
+        <div id="racing-hud" class="row no-padding">
+            <!-- <div class="racing-text">Pos</div>
+            <div class="race-teste" id="Posicao">7/10</div> -->
+
+            <div class="racing-text">Lap</div>
+            <div class="race-teste" id="Lap">1/1</div>
+
+            <div class="racing-text">Checkpoint</div>
+            <div class="race-teste" id="Checkpoints">1/7</div>
+
+
+
+            <div class="racing-text-current-lap">Current Lap</div>
+            <div class="race-teste" id="Laptime">05:51.521</div>
+
+
+
+            <div class="racing-text-best-lap">Fastest Lap</div>
+            <div class="race-teste" id="FastestLaptime"> 00:00.000</div>
+
+
+            <div class="racing-text-total-time">Total Time</div>
+            <div class="race-teste" id="OverallTime"> 05:51.521</div>
+        </div>
+        </div>
+                <div class="jss10 jss13">
+                    <div class="jss1261 jss1264">
+                        <div class="jss1270 jss16465" id="cores">
+                            <div class="jss1276 jss16471"></div>
+                            <div class="jss1277 jss16472"></div>
+                            <div class="jss1278 jss16473"></div>
+                            <div class="jss1279 jss16474"></div>
+                            <div class="jss1280 jss16475"><div class="inner-shadow-bg"></div></div>
+                            </div>
+                        </div>
+                        <input tabindex="-1" style="opacity: 0; pointer-events: none; position: fixed; width: 1px; height: 1px; left: -1px; top: -1px;" />
+                        <input tabindex="0" style="opacity: 0; pointer-events: none; position: fixed; width: 1px; height: 1px; left: -1px; top: -1px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="phone-screen" id="tela" style="display: none;">
+                <div class="notch">
+                    <div class="camera"></div>
+                    <div class="speaker"></div>
+                </div>
+                <div class="status-bar white-text">
+                  <div class="row no-padding">
+                    <div class="col s12" style="padding-top:2px">
+                      <div class="row no-padding">
+                        <div class="col s5 left-align">
+                  <p class="MuiTypography-root jss20 jss27 MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word;">
+                </div>
+                <div class="col s7 right-align">
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-notifications-wrapper" style="max-height: 80px; display: none;" >
+            <div class="notification-container">
+              <div class="app-bar">
+                <div class="icon"  >
+                    <i id="icon-noti"  ></i></div><div class="name"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary"  style="word-break: break-word;" id="notificaçao-titel" >Champion</p></div><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word;" id="notificaçao-time" >Agora</p></div><div class="content"><div class="text"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word;" id="notificaçao-Message" ></p>
+                    </div></div></div></div>
+                 <div class="notificaçaoch"></div> 
+
+            <div class="top-notifications-chamadas" style="max-height: 80px; display: none;">
+                <div class="notification-container-chamadas">
+                    <div class="app-bar-chamadas">
+                    <div class="icon-chamadas" >
+                        <div class="twittericon" title="Messages" style="background-color: rgb(68 208 124 / 85%);color: white;">
+                            <div style="background: url('https://gta-assets.nopixel.net/images/phone-icons/calls.png') 0% 0% / cover no-repeat;height: 18px; width: 18px; bottom: 0px; left: 2px;"></div>    
+                                    </div>
+                                </div>
+                                <div class="name"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word;" id="notificaçaoapp-titel">Void</p></div><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="position: absolute; word-break: break-word; margin-left: 2px; margin-top: 30px; font-size: 12px;" id="notificaçao-time">0</p></div><div class="content"><div class="text"><p class="MuiTypography-root MuiTypography-body2 MuiTypography-colorTextPrimary" style="word-break: break-word;     margin-top: -16px;" id="notificaçaoapp-chamadas"></p>
+                                        <a class="  phone-button btnHangup" aria-label="Hang Up" data-action="btnHangup" style="color: orange; margin-left: 192px;"><i class="fas fa-times-circle"></i></a>
+                                        <a class="  phone-button btnAnswer" aria-label="Answer" data-action="btnAnswer" style="color: #aed581;"><i class="fas fa-check-circle"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                    
+                    <div id="phone-applications">
+                        <div class="home-container phone-app">
+                            <div class="row app-row" style="margin-left: 20px;">
+                            <div class="col s3 hidden-buttons btn-decrypt">
+                            <div class="jss35 jss38 orange darken-4 phone-button" data-action="racing:events:list" aria-label="Racing App" data-balloon-pos="up-left">
+                            <i class="fad fa-flag" style="font-size:32px; color: #fff"></i></div>
+                        </div>
+                    </div>
+                     
+                    <div class="row app-row">
+        
+                    </div>
+                    <div class="row app-row">
+        
+                    </div>
+                    <div class="row app-row">
+        
+                    </div>
+                    <div class="row app-row">
+        
+                    </div>
+                    <div class="row app-row">
+         
+                    </div>
+        
+                  </div>
+
+                   <div class="racing-container phone-app">
+                    <div class="row racing-entries-header no-padding">      
+                    </div>
+                    <div class="row racing-entries-wrapper scrollbar--dark no-padding ">
+                       
+                        <ul class="row collapsible racing-entries">
+                        </ul>
+                    </div>
+                    <div class="racing-footer center-align">
+                        <div class="col s12">
+                          <button style="margin-right: 900px;" class="corridas phone-button" data-action="racing:event:setup" aria-label="Set up a new race" data-balloon-pos="up"><i id="flag-teste" class="fas fa-flag"></i> </button> 
+                          <button id="createrace" class="racing-create phone-button" data-action="" aria-label="Create new race" data-balloon-pos="up"><i id="createrace-teste" class="fas fa-plus icon"></i> </button> 
+                        </div>
+                        <span class="pendente-racing" data-badge-caption="m">Pending</span>
+                    </div>
+                    <ul class="collapsible racing-entries smaller-row-padding">
+                  </div>
+                  <div class="racing-create-container phone-app">
+                    <form id="racing-create-form" style= "max-width: 100%; height: 100;">
+                      <div class="row racing-entries-wrapper scrollbar--dark no-padding">
+                        <div class="row no-padding">
+                          <div class="input-field col s12">
+                            <i class="fas fa-route prefix white-text"></i>
+                            <input id="racing-create-name" type="text" class="validate white-text" maxlength="20" minlength="5" required />
+                            <label style= "margin-left: 60px; "racing-create-name >Track Name</label>
+                          </div>
+                        </div>
+                        <div class="row no-padding">
+                          <div class="input-field col s12" style="max-width:100%">
+                            <i class="fa-solid fa-note-sticky prefix white-text"></i>
+                            <input id="racing-create-name" type="text" class="validate white-text" maxlength="20" minlength="5" required />
+                            <label style= "margin-left: 60px; "racing-create-description >Description</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="racing-create-footer center-align">
+                        <div class="col s12" style="margin-bottom: 250px">
+                          <button type="button" style="margin-bottom: 15px; border-radius: 15px;" class="red darken-3 phone-button" data-action="racing:map:create" aria-label="Set checkpoints" data-balloon-pos="up-left">
+                            <i></i> Record Race</button>
+                          <button type="submit" style="margin-bottom: 15px; border-radius: 15px; margin-left: 10px;" class="green darken-3 racing-create-save" aria-label="Save track" data-balloon-pos="up"> 
+                            <i></i> Save Track</button>
+                          <button type="reset" style="margin-bottom: 15px; border-radius: 15px; margin-left: 10px;" class="red darken-3 racing-create-cancel" aria-label="Stop setting checkpoints" data-balloon-pos="up-right">
+                            <i></i>Cancel</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="racing-start-container phone-app">
+                    <form id="racing-start" style="height:100%">
+                      <div class="row racing-start-entries-wrapper scrollbar--dark no-padding">
+                        <div class="row no-padding white-text">
+                          <div class="input-field col s12">
+                            <select id="racing-start-tracks" class="validate" required></select>
+                          </div>
+                        </div>
+                        <div class="row no-padding">
+                          <div class="col s12">
+                            <div class="chip" >
+                                Creator: <span id="racing-start-map-creator">N/A</span>
+                            </div>
+                            <div class="chip">
+                                Distance: <span id="racing-start-map-distance">N/A</span>m
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row no-padding" style="margin:-right 30px;">
+                          <div class="input-field col s12" style="margin-top: 30px;">
+                            <i class="fas fa-traffic-light prefix white-text"></i>
+                            <input id="racing-start-name" type="text" class="white-text" maxlength="20" minlength="1" required />
+                            <label style= "margin-left: 60px; "racing-start-name">Name Event</label>
+                          </div>                   
+                        </div>
+                        <div class="row no-padding">
+                          <div class="input-field col s12">
+                            <i class="fas fa-sync-alt prefix white-text"></i>
+                            <input id="racing-start-laps" type="number" class="white-text" 
+                              required min="0" max="10" />
+                            <label style= "margin-left: 60px "racing-start-laps >Laps (0 for Sprint)</label>
+                          </div>  
+                        </div>                
+                        <div class="row no-padding">
+                          <div class="input-field col s12">
+                            <i class="fas fa-stopwatch prefix white-text"></i>
+                            <input id="racing-start-time" type="number" class="white-text"
+                              required min="5" max="600" step="1"/>
+                            <label style= "margin-left: 60px; margin-bottom: 30px; "racing-start-time >Seconds Til Start</label>
+                          </div>  
+                        </div>
+                        <div class="row no-padding">
+                          <div class="col s12">
+                            <label style= "margin-left: 50px; "racing-start-description >Description</label>
+                            <p id="racing-start-description" class="white-text" style= "margin-left: 60px;">
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="racing-start-footer center-align">
+                        <div class="col s12">
+                          <button type="submit" class="green btn-racing-start" style="border-radius: 15px;">
+                              <i></i> Start Event</button>
+                          <button type="reset" class="red btn-racing-clear" style="border-radius: 15px; margin-left: 10px;">
+                              <i></i> Clear Event</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="racing-highscore-container phone-app">
+                    <div class="row racing-highscore-entries-wrapper">
+                      <ul class="collapsible racing-highscore-entries scrollbar--dark no-padding">
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="navigation-menu">
+                  <div class="row">
+                    <div class="col s4 right-align">
+                      <a class="phone-button white-text navigation-button" >
+                    </div>
+                    <div class="col s4 center-align">
+                      <a class="phone-button white-text navigation-button" aria-label="Home" data-action-button="home"
+                        data-action="resetPackages"><i class="far fa-circle"  style="font-size:20px"></i>
+                      </a>
+                    </div>
+                    <div class="col s4 center-align">
+                        <a class="phone-button white-text settings-button" aria-label="Settings" data-action-button="home"
+                          data-action="resetPackages"><i class="far fa-cog"  style="font-size:20px;"></i>
+                        </a>
+                      </div>
+                  </div>
+                </div>
+                <div class="row racing-entrants-modal no-padding">
+                    <div class="col s12">
+                        <div id="racing-entrants-modal" class="modal phone-modal modal-fixed-footer">
+                            <div class="modal-content">
+                                <label for="racing-info-description">List of participants</label>
+                                <p id="racing-info-description">
+                                </p>
+                                <ul class="racing-entrants collapsible scrollbar--dark">
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="modal-close waves-effect waves-green btn-flat">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--JavaScript at end of body for optimized loading-->
+                <script type="text/javascript" src="nui://game/ui/jquery.js"></script>
+                <script type="text/javascript" src="js/materialize.min.js"></script>
+                <script type="text/javascript" src="js/debounce.min.js"></script>
+                <script type="text/javascript" src="js/moment.min.js"></script>
+                <script type="text/javascript" src="js/script.js"></script>
+            </body>
+
+        </html>

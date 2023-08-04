@@ -1,0 +1,77 @@
+body{
+	font-family: sans-serif;
+}
+
+.hidden {
+	display: none !important;
+  }
+  
+.proper {
+border-image: linear-gradient(45deg, #ecc800, #564800) 1 !important;
+}
+
+.good {
+	background-color: #3cec54 !important;
+}
+.bad {
+background-color: #F00F18 !important;
+}
+
+/* drillminigame */
+.drillminigame {
+
+	top: 50%;
+	left:50%;
+	transform: translate(-50%,-50%);
+	position:absolute;
+  
+	margin: 0 auto 20px;
+	width: 540px;
+	min-width: 540px;
+	max-width: 540px;
+	height: 540px;
+	min-height: 540px;
+	max-height: 540px;
+	background-color: #232832;
+	display: none;
+}
+.drillminigame-splash{
+	display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    margin-top: 215px;
+}
+.drillminigame-splash .drillminigame-hacker{
+	font-size: 65px;
+	margin-bottom: 30px;
+}
+.drillminigame-groups{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	user-select: none;
+}
+
+
+.drillminigame-group{
+	width: 74px;
+	height: 74px;
+	border: 8px #232832 solid;
+	background-color: #004e1a;
+}
+
+.drillminigame-fliped{
+	width: 74px;
+	height: 74px;
+	border: 8px #000000 solid;
+	background-color: #01a136;
+}
+
+.drillminigame-unfliped{
+	width: 74px;
+	height: 74px;
+	border: 8px #000000 solid;
+	background-color: #004e1a;
+}
