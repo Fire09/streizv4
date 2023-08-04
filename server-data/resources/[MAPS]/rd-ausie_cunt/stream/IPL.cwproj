@@ -1,0 +1,21 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>ymap\ausie_cunt_details.ymap</Item>
+    <Item>ymap\ausie_cunt_details_before.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>ytyp\ausie_cuntytyp.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>

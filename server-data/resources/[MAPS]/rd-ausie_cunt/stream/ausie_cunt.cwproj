@@ -1,0 +1,34 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>hei_sm_15_exshadowmesh.ymap</Item>
+    <Item>hei_sm_15_impexpproxy_a.ymap</Item>
+    <Item>hei_sm_15_impexpproxy_b.ymap</Item>
+    <Item>hei_sm_15_impexpproxy_c.ymap</Item>
+    <Item>hei_sm_15_impexpproxy_modshops.ymap</Item>
+    <Item>hei_sm_15_strm_0.ymap</Item>
+    <Item>hei_sm_rd_strm_2.ymap</Item>
+    <Item>hei_sm_rd.ymap</Item>
+    <Item>hei_sm_15.ymap</Item>
+    <Item>ausie_cunt_details_before.ymap</Item>
+    <Item>hei_sm_occl_03.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>..\ytyp\ausie_cuntytyp.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames>
+    <Item>..\ydr\hei_sm_15_bld2.ydr</Item>
+    <Item>..\ydr\hei_sm_15_bld3.ydr</Item>
+    <Item>..\ydr\np_prop_pile_big.ydr</Item>
+  </YdrFilenames>
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>
