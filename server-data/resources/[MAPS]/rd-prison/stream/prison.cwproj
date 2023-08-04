@@ -1,0 +1,44 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>ymap\prison.ymap</Item>
+    <Item>ymap\prison_cellblock6_milo_.ymap</Item>
+    <Item>ymap\prison_cellblock7_milo_.ymap</Item>
+    <Item>ymap\prison_highway.ymap</Item>
+    <Item>ymap\sanhje_prison_cafeteria_placement.ymap</Item>
+    <Item>ymap\sanhje_prison_infirmary_placement.ymap</Item>
+    <Item>ymap\sanhje_prison_placement.ymap</Item>
+    <Item>ymap\sanhje_prison_reception_placement.ymap</Item>
+    <Item>replace\ymap\cs6_04_grass_0.ymap</Item>
+    <Item>replace\ymap\cs6_occl_02.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_critical_0.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_critical_2.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_long_0.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_long_3.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_0.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_1.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_2.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_3.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_4.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_5.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_7.ymap</Item>
+    <Item>replace\ymap\lr_cs6_04_strm_8.ymap</Item>
+    <Item>replace\ymap\vw_distlodlights_medium027.ymap</Item>
+    <Item>replace\ymap\vw_lodlights_medium027.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>ytyp\prison_assets.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>

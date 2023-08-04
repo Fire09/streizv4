@@ -1,0 +1,22 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>brofx_mansion14_mlo.ymap</Item>
+    <Item>brofx_mansion14_pool_mlo.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>brofx_mansion14_pool_ytyp.ytyp</Item>
+    <Item>brofx_mansion14_ytyp.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames />
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>
