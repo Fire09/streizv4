@@ -1,0 +1,24 @@
+<CodeWalkerProject>
+  <Name>New CodeWalker Project</Name>
+  <Version value="1" />
+  <YmapFilenames>
+    <Item>np_dd_cellar_milo_.ymap</Item>
+    <Item>reh_int_placement_sum2_interior_1_dlc_int_04_sum2_milo_.ymap</Item>
+    <Item>np_dd_cellar_ext.ymap</Item>
+  </YmapFilenames>
+  <YtypFilenames>
+    <Item>np_dd_cellar.ytyp</Item>
+  </YtypFilenames>
+  <YbnFilenames>
+    <Item>reh_dlc_int_04_sum2_np.ybn</Item>
+  </YbnFilenames>
+  <YndFilenames />
+  <YnvFilenames />
+  <TrainsFilenames />
+  <ScenarioFilenames />
+  <AudioRelFilenames />
+  <YdrFilenames />
+  <YddFilenames />
+  <YftFilenames />
+  <YtdFilenames />
+</CodeWalkerProject>
