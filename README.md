@@ -1,1 +1,1 @@
-Had this shit server for a while on here. but fuck striez lol, people reselling a shit server that they steal themselves.. enjoy
+Had this server for a while on here. but *** striez lol, people reselling a terrible server that they steal themselves.. enjoy
